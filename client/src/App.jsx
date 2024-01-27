@@ -1,11 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Home from './pages/Home';
+import Reserve from './pages/Reserve';
+import About from './pages/About';
+import ExperienceO2 from './pages/ExperienceO2';
 
-function MyComponent() {
+function App() {
   return (
-    <div className="bg-blue-500 text-white p-4">
-      This is a Tailwind CSS styled component.
-    </div>
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/reserve" element={<Reserve />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/experience-o2" element={<ExperienceO2 />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default MyComponent;
+export default App;
