@@ -8,6 +8,9 @@ export default {
     extend: {
       colors: {
         customGold: '#D7BE96',
+        formColor: '#c2b299',
+        custom: '#e4dfd4',
+        customBlack: '#1b1b1b',
       },
 
       animation: {

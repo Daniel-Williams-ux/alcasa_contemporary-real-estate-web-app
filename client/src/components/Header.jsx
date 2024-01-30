@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
+import ContactIcon from '@mui/icons-material/ContactPage';
+import Contact from './Contact';
 
 
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -18,8 +20,6 @@ function Header() {
       }
     };
 
-
-  
     document.addEventListener('mousedown', handleClickOutside);
   
     return () => {
@@ -32,7 +32,6 @@ function Header() {
     hidden: { opacity: 0, x: '100%' },
     visible: { opacity: 1, x: '0%', transition: { staggerChildren: 0.4, duration: 0.2 } },
   };
-
 
   const menuItemVariants = {
     hidden: { opacity: 0, x: '-100%' },
@@ -132,12 +131,16 @@ function Header() {
           </div>
 
           <div className="logo">
-          <IconButton color="inherit">
+          {/* <IconButton color="inherit">
             <SearchIcon />
-          </IconButton>
-          <span className="font-mono font-semibold antialiased tracking-wide leading-loose  mx-1">CONNECT NOW</span>
+          </IconButton> */}
+          <span className="font-mono font-semibold antialiased tracking-wide leading-loose  mx-1 cursor-grab"
+          onClick={() => navigate('/contact')} 
+          >
+            <ContactIcon />  CONNECT NOW</span>
+          <button className="text-black ml-4 focus:outline-none">
+          </button>
           </div>
-          
         </div>
       </AnimatePresence>
     </header>
