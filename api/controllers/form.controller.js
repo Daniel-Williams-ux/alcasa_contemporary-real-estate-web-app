@@ -7,7 +7,6 @@ export const form = async (req, res) => {
         await newUser.save();
         res.status(200).json('Contact saved successfully')
     } catch (error) {
-        console.error('Error saving contact:', error);
-        res.status(500).json(error.message)
+        next(error);
     }
 }

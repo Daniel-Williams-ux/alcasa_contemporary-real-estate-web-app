@@ -21,6 +21,17 @@ app.listen(3000, () => {
   app.use('/api/user', userRouter);
   app.use('/api/form', formRouter);
 
+  //middleware
+  app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    return res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message,
+    });
+});
+
   const mySecret = process.env.MONGO;
 
   const client = mongoose.connect(mySecret);
