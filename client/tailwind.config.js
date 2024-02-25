@@ -13,6 +13,10 @@ export default {
         customBlack: '#1b1b1b',
       },
 
+      backgroundImage: {
+        'hero-pattern': "url('/contact.jpg')",
+      },
+
       animation: {
         menu: 'menu-slide',
       },

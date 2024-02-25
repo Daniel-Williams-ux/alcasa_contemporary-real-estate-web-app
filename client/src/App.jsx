@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Navigation from './components/Navigation';
 import Layout from './components/Layout';
 import Residences from './pages/Residences';
 import Bespoke from './pages/Bespoke';

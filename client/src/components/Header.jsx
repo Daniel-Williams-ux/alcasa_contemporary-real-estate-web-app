@@ -38,6 +38,7 @@ function Header() {
     visible: { opacity: 1, x: '0%' },
   };
 
+
   return (
     <header className="text-black py-4 shadow-2xl">
       <AnimatePresence>
@@ -63,12 +64,12 @@ function Header() {
               initial={{ transform: 'translateX(-100%)' }}
               animate={{ transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)' }}
               transition={{ duration: 0.5 }}
-              className={`absolute top-0 left-0 h-screen w-full bg-none text-black  shadow-lg  overflow-hidden transform max-w-menu ${isMenuOpen ? 'animate-menu' : '-translate-x-full'}`}
+              className={`absolute top-0 left-0 h-screen w-full bg-formColor text-black shadow-lg overflow-hidden transform max-w-xl ${isMenuOpen ? 'animate-menu' : '-translate-x-full'}`}
             >
               {isMenuOpen && (
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="text-black border-none rounded px-3 py-2 focus:outline-none  font-semibold font-mono hover:font-serif antialiased"
+                  className="text-black text-lg border-none rounded px-3 py-2 focus:outline-none font-semibold font-mono hover:font-serif antialiased"
                 >
                   ✕ Close
                 </button>
@@ -81,23 +82,25 @@ function Header() {
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 className="flex flex-col items-center  space-y-8 py-8 my-64"
               >
+              
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   variants={menuItemVariants}
                   initial={{ opacity: 0, x: isMenuOpen ? 0 : -100 }}
                   animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -100 }}
-                  className="p-2 font-mono hover:font-serif font-semibold antialiased tracking-wide leading-loose"
+                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
                 >
                   <Link to="/" onClick={() => setMenuOpen(false)}>
                     Residences
                   </Link>
                 </motion.li>
+
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   variants={menuItemVariants}
-                  className="p-2 font-mono hover:font-serif font-semibold antialiased tracking-wide leading-loose"
+                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
                 >
                   <Link to="/" onClick={() => setMenuOpen(false)}>
                     Bespoke
@@ -107,7 +110,7 @@ function Header() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   variants={menuItemVariants}
-                  className="p-2 font-mono hover:font-serif font-semibold antialiased tracking-wide leading-loose"
+                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
                 >
                   <Link to="/about" onClick={() => setMenuOpen(false)}>
                     About
@@ -117,23 +120,21 @@ function Header() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   variants={menuItemVariants}
-                  className="p-2 font-mono hover:font-serif font-semibold antialiased tracking-wide leading-loose"
+                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
                 >
                   <Link to="/experience-o2" onClick={() => setMenuOpen(false)}>
                     ExperienceO2
                   </Link>
                 </motion.li>
+                
               </motion.ul>
             </motion.nav>
           )}
           <div className="logo">
-            <img className="h-10 sm:h-10 contrast-200" src="/alcasa-logo.jpg" alt="alcasa Logo" />
+            <img className="h-10 sm:h-10 hidden sm:inline contrast-200" src="/alcasa-logo.jpg" alt="alcasa Logo" />
           </div>
 
           <div className="logo">
-          {/* <IconButton color="inherit">
-            <SearchIcon />
-          </IconButton> */}
           <span className="font-mono font-semibold antialiased tracking-wide leading-loose  mx-1 cursor-grab"
           onClick={() => navigate('/contact')} 
           >
