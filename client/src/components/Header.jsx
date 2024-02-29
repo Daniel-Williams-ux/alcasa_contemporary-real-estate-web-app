@@ -40,7 +40,7 @@ function Header() {
 
 
   return (
-    <header className="text-black py-4 shadow-2xl">
+    <header className="text-black py-4 shadow-md fixed top-0 left-0 w-full z-50 bg-white">
       <AnimatePresence>
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center justify-start">
@@ -64,7 +64,7 @@ function Header() {
               initial={{ transform: 'translateX(-100%)' }}
               animate={{ transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)' }}
               transition={{ duration: 0.5 }}
-              className={`absolute top-0 left-0 h-screen w-full bg-formColor text-black shadow-lg overflow-hidden transform max-w-xl ${isMenuOpen ? 'animate-menu' : '-translate-x-full'}`}
+              className={`absolute top-0 left-0 h-screen w-full bg-background text-black shadow-lg overflow-hidden transform max-w-xl ${isMenuOpen ? 'animate-menu' : '-translate-x-full'}`}
             >
               {isMenuOpen && (
                 <button
@@ -82,6 +82,19 @@ function Header() {
                 transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 className="flex flex-col items-center  space-y-8 py-8 my-64"
               >
+
+                <motion.li
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  variants={menuItemVariants}
+                  initial={{ opacity: 0, x: isMenuOpen ? 0 : -100 }}
+                  animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -100 }}
+                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
+                >
+                  <Link to="/" onClick={() => setMenuOpen(false)}>
+                    Home
+                  </Link>
+                </motion.li>
               
                 <motion.li
                   whileHover={{ scale: 1.1 }}
@@ -131,10 +144,10 @@ function Header() {
             </motion.nav>
           )}
           <div className="logo">
-            <img className="h-10 sm:h-10 hidden sm:inline contrast-200" src="/alcasa-logo.jpg" alt="alcasa Logo" />
+            <img className="h-10 sm:h-10  contrast-200" src="/alcasa-logo.jpg" alt="alcasa Logo" />
           </div>
 
-          <div className="logo">
+          <div className="logo hidden sm:inline">
           <span className="font-mono font-semibold antialiased tracking-wide leading-loose  mx-1 cursor-grab"
           onClick={() => navigate('/contact')} 
           >

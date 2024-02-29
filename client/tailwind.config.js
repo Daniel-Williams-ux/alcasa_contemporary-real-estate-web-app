@@ -11,6 +11,10 @@ export default {
         formColor: '#c2b299',
         custom: '#e4dfd4',
         customBlack: '#1b1b1b',
+        background: 'rgb(237, 237, 237)',
+      },
+      corePlugins: {
+        aspectRatio: false,
       },
 
       backgroundImage: {
