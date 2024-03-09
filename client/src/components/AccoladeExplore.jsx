@@ -1,170 +1,176 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css'; // Import styles for react-tabs
+import React, { useState, useEffect } from 'react';
 
 function AccoladeExplore() {
-    
+
+  const [typedTexts, setTypedTexts] = useState([
+    '', // Initial text for section 1
+    '', // Initial text for section 2
+    '', // Initial text for section 3
+    '', // Initial text for section 4
+    '', // Initial text for section 5
+    '', // Initial text for section 6
+    '', // Initial text for section 7
+    '', // Initial text for section 8
+  ]);
+
+  const textToType = [
+   `
+   It's about crafting an enduring legacy—a sanctuary of warmth and intimacy for loved ones, a timeless gift that the next generation will cherish and take pride in. Welcome to Accolade where luxury knows no compromise, tailored for the 1% who seek not just a home but an unparalleled legacy.
+   `,
+  `Cheers to the visionary trailblazers, the pace-setters, the game changers, narrative-shifters, the industry disruptors, and shakers. Here’s to the titans, legacy creators, global movers, conquerors, and architects of change who, against all odds, stood resilient and emerged triumphant. Here's to those who redefine success. Cheers to the relentless spirit of achievement. A timeless gift that the next generation will cherish and take pride in. Accolade was meticulously crafted to meet the aspirations of a discerning few—individuals in pursuit of a world-class residence that serves as a living testament to their success and triumph.`,
+    `A testament to Prestigious, timeless elegance that is unphased by the passing of time`,
+    `Resilience of top-grade materials and fittings Complemented by cutting-edge construction methods`,
+    `A nest of enduring warmth, intimate moments, and personalized comfort for cherished family and loved ones.`,
+    `Seamless Living and heightened convenience through purposeful, refined cutting-edge technology`,
+    `Indoor and outdoor spaces that exude class, elegance, and absolute luxury, ensuring a lifestyle beyond compare`,
+    `Timeless - We handle everything on your behalf. Kick back, relax, and stay informed with real-time updates on your project from anywhere`
+  ];
+
+  useEffect(() => {
+    const typingIntervals = textToType.map((text, index) => {
+      let currentText = '';
+      const interval = setInterval(() => {
+        currentText += text[currentText.length];
+        setTypedTexts(prevTypedTexts => {
+          const newTypedTexts = [...prevTypedTexts];
+          newTypedTexts[index] = currentText;
+          return newTypedTexts;
+        });
+        if (currentText === text) clearInterval(interval);
+      }, 20);
+      return interval;
+    });
+    return () => {
+      typingIntervals.forEach(interval => clearInterval(interval));
+    };
+  }, []); // empty dependency array ensures useEffect runs only once
+
   return (
-    <div className="container mx-auto py-12 mt-16">
-      {/* ACCOLADE */}
-      <section className="mb-12">
-      <motion.h1
-          className="text-4xl font-bold text-center text-red-600 mb-4"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          ACCOLADE
-        </motion.h1>
-        <motion.p
-          className="text-lg text-center text-gray-700 mb-8 font-light font-serif"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {/* TAGLINES */}
-          <br />
-          <span className="italic">
-            Cheers to the visionary trailblazers, the pace-setters, the game changers, narrative-shifters, the industry disruptors, and shakers. Here’s to the titans, legacy creators, global movers, conquerors, and architects of change who, against all odds, stood resilient and emerged triumphant. Here's to those who redefine success. Cheers to the relentless spirit of achievement.
-          </span>
-          <br /><br />
-          <motion.div
-            className="flex justify-center mb-8"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <motion.img
-              src="alcasa3.jpg"
-              alt="Accolade"
-              className="w-full md:max-w-lg rounded-lg shadow-md"
-              whileHover={{ scale: 1.2 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.div>
-          <span className="text-red-600">A legacy of triumph</span>
-          <br />
-          <span className="text-blue-600">A timeless gift that the next generation will cherish and take pride in</span>
-          <br />
-          <span className="text-green-600">A sanctuary of warmth and intimacy for your loved ones</span>
-          <p className="text-purple-800 font-extrabold font-serif">Beyond just another asset in your portfolio, Accolade presents an opportunity to sculpt a lasting legacy</p>
-        </motion.p>
-      </section>
-
-      {/* MAIN BODY */}
-      <section className="mb-12 ml-1">
-        <p className="text-lg text-gray-700 mb-8 font-serif">
-          Accolade was meticulously crafted to meet the aspirations of a discerning few—individuals in pursuit of a world-class residence that serves as a living testament to their success and triumph.
-        </p>
-      </section>
-
-      {/* FEATURES/ BENEFITS */}
-      <section className="mb-12 ml-1">
-      <motion.h2
-          className="text-3xl font-bold text-gray-800 mb-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          FEATURES/ BENEFITS
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <motion.div
-            className="font-serif"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <h3 className="text-xl font-semibold text-gray-700 mb-2 font-serif">Timeless, world-class Architecture</h3>
-            <p className="text-gray-700 mb-6 font-serif">A testament to Prestigious, timeless elegance that is unphased by the passing of time</p>
-
-            <h3 className="text-xl font-semibold text-gray-700 mb-2 font-serif">Climate resilience</h3>
-            <p className="text-gray-700 mb-6 font-serif">Resilience of top-grade materials and fittings Complemented by cutting-edge construction methods</p>
-
-            <h3 className="text-xl font-semibold text-gray-700 mb-2 font-serif">Family oasis</h3>
-            <p className="text-gray-700 mb-6 font-serif">A nest of enduring warmth, intimate moments, and personalized comfort for cherished family and loved ones.</p>
-            </motion.div>
-            <motion.div
-            className="font-serif"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            <h3 className="text-xl font-semibold text-gray-700 mb-2 font-serif">Convenience through Smart Technology</h3>
-            <p className="text-gray-700 mb-6 font-serif">Seamless Living and heightened convenience through purposeful, refined cutting-edge technology</p>
-
-            <h3 className="text-xl font-semibold text-gray-700 mb-2 font-serif">Refined Luxury living Stress-free</h3>
-            <p className="text-gray-700 mb-6 font-serif">Indoor and outdoor spaces that exude class, elegance, and absolute luxury, ensuring a lifestyle beyond compare.</p>
-
-            <h3 className="text-xl font-semibold text-gray-700 mb-2 font-serif">Worry-free development</h3>
-            <p className="text-gray-700 mb-6 font-serif">Timeless - We handle everything on your behalf. Kick back, relax, and stay informed with real-time updates on your project from anywhere</p>
-            </motion.div>
+    <div className="accolade-explore">
+      {/* Section 1: Accolade */}
+      <div className="relative bg-cover bg-center h-screen" style={{ backgroundImage: `url(${"/alcasa1.jpg"})` }}>
+        <div className="absolute inset-0 flex flex-col justify-end items-center text-white bg-black bg-opacity-50">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-4xl font-bold mb-4 text-center font-mono">
+              ACCOLADE
+            </h2>
+            <p className="text-white text-lg font-serif leading-relaxed mb-8 text-center">
+              {typedTexts[0]}
+            </p>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section className="mb-12 font-serif ml-1">
-        <motion.h2
-          className="text-3xl font-bold text-gray-800 mb-4"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          SPECIFICATIONS
-        </motion.h2>
-        <Tabs>
-          <TabList>
-            <Tab>General</Tab>
-            <Tab>Indoor</Tab>
-            <Tab>Outdoor</Tab>
-            <Tab>Development Duration</Tab>
-          </TabList>
+      {/* Section : cheers */}
+      <div className="relative bg-white bg-center h-screen">
+        <div className="relative flex flex-col sm:flex-row justify-center items-center h-full">
+          <div className="w-full sm:w-1/2 mb-8 sm:mb-0 order-2 sm:order-1">
+            <img src="/cheers.jpg" alt="Timeless, world-class Architecture" className="object-cover w-full h-full" />
+          </div>
+          <div className="w-full sm:w-1/2 text-black bg-opacity-90 my-8 sm:my-0 order-1 sm:order-2">
+            <div className="max-w-lg mx-auto px-6 text-center">
+              <h2 className="text-4xl font-bold mb-4 font-mono">Timeless, world-class Architecture</h2>
+              <p className="text-lg font-serif leading-relaxed mb-8">
+                {typedTexts[1]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          <TabPanel>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Total land size of actual residence - 2400sm (4 plots)</li>
-              <li>Dimensions of actual residence - 29m x 16.4m</li>
-              <li>Architecture style - Contemporary modern architecture</li>
-              <li>Development stage - Concept</li>
-              <li>Power system - Hybrid</li>
-              <li>Smart home technology - Room/Area specific automation</li>
-            </ul>
-          </TabPanel>
-          <TabPanel>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Total number of bedrooms - 8 nos</li>
-              <li>Total number of bathrooms - 8 ½ nos</li>
-              <li>Master suite 1/ executive suite 1 - Bedroom, bath and walk-in-closet</li>
-              <li>Master suite 2/ executive suite 2 - Bedroom, bath and walk-in-closet</li>
-              <li>Total number of Lounges - 3 nos</li>
-              <li>Kitchen 1 - Back end/ gourmet Chef’s kitchen</li>
-              <li>Kitchen 2 - Open kitchen/dry kitchen</li>
-              <li>Open floor concept - Yes</li>
-              <li>Double volume/void over spaces - Yes</li>
-            </ul>
-          </TabPanel>
-          <TabPanel>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Outdoor recreation (Adult and kids) - Yes</li>
-              <li>Outdoor Relaxation and garden - Yes</li>
-              <li>Total carparks - 6+</li>
-              <li>Ancillary facilities (gate house, gen. house etc.) - Yes</li>
-              <li>Swimming pool - Yes</li>
-              <li>Total ground floor area - 450sqm</li>
-              <li>Total first floor area - 600sqm</li>
-              <li>Total pent floor area - 600sqm</li>
-            </ul>
-          </TabPanel>
-          <TabPanel>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Pre-development/preliminaries - 1 month</li>
-              <li>Development (carcass) - 2-3 months</li>
-              <li>Development Finishes - 3 - 4 months</li>
-              <li>Total Duration - 7 – 8 months</li>
-            </ul>
-          </TabPanel>
-        </Tabs>
-      </section>
+      {/* Section 2: Timeless, world-class Architecture */}
+      <div className="relative bg-black bg-center h-screen">
+        <div className="relative flex flex-col sm:flex-row justify-center items-center h-full">
+          <div className="w-full sm:w-1/2 mb-8 sm:mb-0 order-2 sm:order-1">
+            <img src="/timeless.jpg" alt="Timeless, world-class Architecture" className="object-cover w-full h-full" />
+          </div>
+          <div className="w-full sm:w-1/2 text-white bg-opacity-90 my-8 sm:my-0 order-1 sm:order-2">
+            <div className="max-w-lg mx-auto px-6 text-center">
+              <h2 className="text-4xl text-red-600 font-bold mb-4 font-mono">Timeless, world-class Architecture</h2>
+              <p className="text-lg font-serif leading-relaxed mb-8">
+                {typedTexts[2]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 3: Climate Resilience */}
+      <div className="relative bg-cover bg-center h-screen" style={{ backgroundImage: `url(${"/climate.jpg"})` }}>
+        <div className="absolute inset-0 flex flex-col justify-end items-center text-white bg-black bg-opacity-50">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-4xl font-bold mb-4 text-center font-mono">
+              Climate Resilience
+            </h2>
+            <p className="text-white text-lg font-serif leading-relaxed mb-8 text-center">
+              {typedTexts[3]}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 4: Family Oasis */}
+      <div className="relative bg-gradient-to-r from-green-600 via-green-700 to-teal-800 bg-center h-screen">
+        <div className="relative flex flex-col sm:flex-row justify-center items-center h-full">
+          <div className="w-full sm:w-1/2 mb-8 sm:mb-0 order-2">
+            <img src="/oasis.jpg" alt="Family Oasis" className="object-cover w-full h-full" />
+          </div>
+          <div className="w-full sm:w-1/2 text-white bg-opacity-90 my-8 sm:my-0 order-1">
+            <div className="max-w-lg mx-auto px-6 text-center">
+              <h2 className="text-4xl text-red-600 font-bold mb-4 font-mono">Family Oasis</h2>
+              <p className="text-lg font-serif leading-relaxed mb-8">
+                {typedTexts[4]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 5: Convenience through Smart Technology */}
+      <div className="relative bg-cover bg-center h-screen" style={{ backgroundImage: `url(${"/smart.jpg"})` }}>
+        <div className="absolute inset-0 flex flex-col justify-end items-center text-white bg-black bg-opacity-50">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-4xl font-bold mb-4 text-center font-mono">
+              Convenience through Smart Technology
+            </h2>
+            <p className="text-white text-lg font-serif leading-relaxed mb-8 text-center">
+              {typedTexts[5]}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 6: Refined Luxury living Stress-free */}
+      <div className="relative bg-gradient-to-r from-yellow-600 via-yellow-700 to-orange-800 bg-center h-screen">
+        <div className="relative flex flex-col sm:flex-row justify-center items-center h-full">
+          <div className="w-full sm:w-1/2 mb-8 sm:mb-0 order-2 sm:order-1">
+            <img src="/alcasa6.jpg" alt="Refined Luxury living Stress-free" className="object-cover w-full h-full" />
+          </div>
+          <div className="w-full sm:w-1/2 text-white bg-opacity-90 my-8 sm:my-0 order-1 sm:order-2">
+            <div className="max-w-lg mx-auto px-6 text-center">
+              <h2 className="text-4xl text-black font-bold mb-4 font-mono">Refined Luxury living Stress-free</h2>
+              <p className="text-lg font-serif leading-relaxed mb-8">
+                {typedTexts[6]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 7: Worry-free development */}
+      <div className="relative bg-cover bg-center h-screen" style={{ backgroundImage: `url(${"/alcasa7.jpg"})` }}>
+        <div className="absolute inset-0 flex flex-col justify-end items-center text-white bg-black bg-opacity-50">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-4xl font-bold mb-4 text-center font-mono">
+              Worry-free development
+            </h2>
+            <p className="text-white text-lg font-serif leading-relaxed mb-8 text-center">
+              {typedTexts[7]}
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
