@@ -9,6 +9,8 @@ import ExperienceO2 from './pages/ExperienceO2';
 import Contact from './components/Contact';
 import AccoladeCustomize from './components/AccoladeCustomize';
 import AccoladeExplore from './components/AccoladeExplore';
+import DawnExplore from './components/DawnExplore';
+import DawnCustomize from './components/DawnCustomize';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/customize" element={<Layout><AccoladeCustomize /></Layout>} />
         <Route path="/explore" element={<Layout><AccoladeExplore /></Layout>} />
+        <Route path="/explore2" element={<Layout><DawnExplore /></Layout>} />
+        <Route path="/customize2" element={<Layout><DawnCustomize /></Layout>} />
       </Routes>
     </Router>
   );
