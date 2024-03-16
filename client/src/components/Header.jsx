@@ -104,21 +104,12 @@ function Header() {
                   animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -100 }}
                   className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
                 >
-                  <Link to="/" onClick={() => setMenuOpen(false)}>
+                  <Link to="/residences" onClick={() => setMenuOpen(false)}>
                     Residences
                   </Link>
                 </motion.li>
 
-                <motion.li
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  variants={menuItemVariants}
-                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
-                >
-                  <Link to="/" onClick={() => setMenuOpen(false)}>
-                    Bespoke
-                  </Link>
-                </motion.li>
+                
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -152,8 +143,7 @@ function Header() {
           onClick={() => navigate('/contact')} 
           >
             <ContactIcon />  CONNECT NOW</span>
-          <button className="text-black ml-4 focus:outline-none">
-          </button>
+          
           </div>
         </div>
       </AnimatePresence>

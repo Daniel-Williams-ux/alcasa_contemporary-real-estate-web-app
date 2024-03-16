@@ -17,6 +17,10 @@ export default {
         aspectRatio: false,
       },
 
+      opacityConf: {
+        '90': '.90',
+      },
+
       backgroundImage: {
         'hero-pattern': "url('/contact.jpg')",
       },
