@@ -49,7 +49,7 @@ function AccoladeCustomize() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-red-900 text-center mb-4 font-serif"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-black text-center mb-4 font-mono"
             >
               {words[index]}
             </motion.h2>
