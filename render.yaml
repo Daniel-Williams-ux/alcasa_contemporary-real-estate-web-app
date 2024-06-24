@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: alcasa-contemporary
+    env: node
+    buildCommand: npm install
+    startCommand: npm run start:all
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+# You can define custom commands in the root package.json

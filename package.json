@@ -5,7 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon api/index.js"
+    "dev": "nodemon api/index.js",
+    "install:all": "npm install --prefix frontend && npm install --prefix backend",
+    "start:all": "npm run start --prefix backend & npm run dev --prefix frontend",
+    "build:all": "npm run build --prefix frontend && npm run build --prefix backend"
   },
   "keywords": [],
   "author": "",
