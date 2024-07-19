@@ -44,7 +44,7 @@ function AccoladeExplore() {
     <div className="luxury-home-explorer">
       {/* Section 1: Accolade */}
       <div className="relative bg-cover bg-center h-screen" style={{ backgroundImage: `url("/alcasa1.jpg")` }}>
-        <div className="absolute inset-0 flex flex-col justify-end items-center text-white bg-black bg-opacity-50">
+        <div className="absolute inset-0 flex flex-col justify-end items-center text-white bg-black">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-4xl font-bold mb-4 text-center font-serif">
               ACCOLADE: Where Luxury Resides
