@@ -35,8 +35,8 @@ function Home() {
         />
         <div className="absolute inset-0 bg-black opacity-50" />
         <div className="absolute bottom-0 left-0 w-full text-center pb-8 text-white">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 font-mono">ACCOLADE</h2>
-          <h1 className="text-3xl md:text-4xl font-black">A Legacy of Triumph</h1>
+          <h2 className="text-3xl md:text-5xl font-black mb-4 font-mono"></h2>
+          <h1 className="text-3xl md:text-4xl font-black"></h1>
           <p className="text-lg md:text-xl">8 bedrooms | 8 ½ bath | L29 x W16.5</p>
           <div className="mt-4 flex justify-center">
             <Link to="/explore">
