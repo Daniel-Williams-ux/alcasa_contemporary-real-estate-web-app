@@ -8,7 +8,7 @@
     "dev": "vite",
     "install:all": "npm install --prefix client && npm install --prefix backend",
     "start:all": "npm run start --prefix backend & npm run dev --prefix frontend",
-    "build": "vite build"
+    "build": "npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
