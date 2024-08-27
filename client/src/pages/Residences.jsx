@@ -68,7 +68,7 @@ const Residences = () => {
   const currentImage = currentResidence.images[currentImageIndex];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-800 via-indigo-900 to-gray-900">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-black-800 via-white to-black">
       <motion.div
         className="w-full max-w-4xl px-6 py-12 bg-white bg-opacity-80 rounded-lg shadow-2xl"
         initial={{ opacity: 0, y: 50 }}
