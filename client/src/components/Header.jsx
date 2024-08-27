@@ -1,154 +1,55 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@chakra-ui/react';
-import { motion, AnimatePresence } from 'framer-motion';
-import SearchIcon from '@mui/icons-material/Search';
-import IconButton from '@mui/material/IconButton';
-import ContactIcon from '@mui/icons-material/ContactPage';
-import Contact from './Contact';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
+const Header = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
-function Header() {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-  
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [menuRef]);
-  
-
-  const menuVariants = {
-    hidden: { opacity: 0, x: '100%' },
-    visible: { opacity: 1, x: '0%', transition: { staggerChildren: 0.4, duration: 0.2 } },
-  };
-
-  const menuItemVariants = {
-    hidden: { opacity: 0, x: '-100%' },
-    visible: { opacity: 1, x: '0%' },
-  };
-
-
-  return (
-    <header className="text-black py-4 shadow-md fixed top-0 left-0 w-full z-50 bg-white">
-      <AnimatePresence>
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center justify-start">
-            <Button
-              onClick={() => setMenuOpen(!isMenuOpen)}
-              colorScheme="blackAlpha"
-              variant="outline"
-              rounded="md"
-              px={3}
-              py={2}
-              focus="outline-none"
-              className="font-mono hover:text-slate-600 antialiased font-semibold"
-            >
-              ☰ Menu
-            </Button>
-          </div>
-          {isMenuOpen && (
-            <motion.nav
-            ref={menuRef}
-
-              initial={{ transform: 'translateX(-100%)' }}
-              animate={{ transform: isMenuOpen ? 'translateX(0%)' : 'translateX(-100%)' }}
-              transition={{ duration: 0.5 }}
-              className={`absolute top-0 left-0 h-screen w-full bg-background text-black shadow-lg overflow-hidden transform max-w-xl ${isMenuOpen ? 'animate-menu' : '-translate-x-full'}`}
-            >
-              {isMenuOpen && (
-                <button
-                  onClick={() => setMenuOpen(false)}
-                  className="text-black text-lg border-none rounded px-3 py-2 focus:outline-none font-semibold font-mono hover:font-serif antialiased"
-                >
-                  ✕ Close
-                </button>
-              )}
-              <div className="overlay bg-overlay"></div>
-              <motion.ul
-                initial="hidden"
-                animate={isMenuOpen ? 'visible' : 'hidden'}
-                variants={menuVariants}
-                transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                className="flex flex-col items-center  space-y-8 py-8 my-64"
-              >
-
-                <motion.li
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  variants={menuItemVariants}
-                  initial={{ opacity: 0, x: isMenuOpen ? 0 : -100 }}
-                  animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -100 }}
-                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
-                >
-                  <Link to="/" onClick={() => setMenuOpen(false)}>
-                    Home
-                  </Link>
-                </motion.li>
-              
-                <motion.li
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  variants={menuItemVariants}
-                  initial={{ opacity: 0, x: isMenuOpen ? 0 : -100 }}
-                  animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -100 }}
-                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
-                >
-                  <Link to="/residences" onClick={() => setMenuOpen(false)}>
-                    Residences
-                  </Link>
-                </motion.li>
-
-                
-                <motion.li
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  variants={menuItemVariants}
-                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
-                >
-                  <Link to="/about" onClick={() => setMenuOpen(false)}>
-                    About
-                  </Link>
-                </motion.li>
-                <motion.li
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  variants={menuItemVariants}
-                  className="p-2 font-mono text-xl hover:font-serif font-semibold antialiased tracking-wide leading-loose"
-                >
-                  <Link to="/experience-o2" onClick={() => setMenuOpen(false)}>
-                    ExperienceO2
-                  </Link>
-                </motion.li>
-                
-              </motion.ul>
-            </motion.nav>
-          )}
-          <div className="logo">
-            <img className="h-10 sm:h-10  contrast-200" src="/alcasa-logo.jpg" alt="alcasa Logo" />
-          </div>
-
-          <div className="logo hidden sm:inline">
-          <span className="font-mono font-semibold antialiased tracking-wide leading-loose  mx-1 cursor-grab"
-          onClick={() => navigate('/contact')} 
-          >
-            <ContactIcon />  CONNECT NOW</span>
-          
-          </div>
-        </div>
-      </AnimatePresence>
-    </header>
-  );
+    return(
+        <header className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-black p-4">
+            <nav className="container mx-auto flex justify-between items-center">
+                <div>
+                    <Link to="/">
+                        {/* Use a more optimized format like WebP */}
+                        <img 
+                            src="/logo.webp" 
+                            alt="Alcasa-contemporary Logo" 
+                            className="h-16 md:h-10 lg:h-16 max-w-full transform transition-transform duration-300 hover:scale-110" 
+                            loading="lazy" // Lazy-load the logo for better performance
+                        />
+                    </Link>
+                </div>
+                <div className="hidden md:flex space-x-4">
+                    <Link to="/" className="relative hover:text-gray-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white hover:after:w-full after:transition-all after:duration-300">Home</Link>
+                    <Link to="/residences" className="relative hover:text-gray-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white hover:after:w-full after:transition-all after:duration-300">Residences</Link>
+                    <Link to="/about" className="relative hover:text-gray-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white hover:after:w-full after:transition-all after:duration-300">About</Link>
+                    <Link to="/experience-o2" className="relative hover:text-gray-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white hover:after:w-full after:transition-all after:duration-300">ExperienceO2</Link>
+                    <Link to="/contact" className="relative hover:text-gray-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white hover:after:w-full after:transition-all after:duration-300">Contact</Link>
+                </div>
+                <div className="md:hidden">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="focus:outline-none focus:ring-2 focus:ring-white transform transition-transform duration-300">
+                        <svg 
+                            className={`w-6 h-6 transform transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}  
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24" 
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}/>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            {isOpen && (
+                <div className={`md:hidden flex flex-col space-y-2 p-4 transform transition-all duration-300 ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
+                    <Link to="/" className="hover:text-gray-300" onClick={() => setIsOpen(false)}>Home</Link>
+                    <Link to="/courses" className="hover:text-gray-300" onClick={() => setIsOpen(false)}>Courses</Link>
+                    <Link to="/about" className="hover:text-gray-300" onClick={() => setIsOpen(false)}>About</Link>
+                    <Link to="/contact" className="hover:text-gray-300" onClick={() => setIsOpen(false)}>Contact</Link>
+                </div>
+            )}
+        </header>
+    );
 }
 
 export default Header;

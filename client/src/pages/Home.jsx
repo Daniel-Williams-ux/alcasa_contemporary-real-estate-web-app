@@ -32,6 +32,7 @@ function Home() {
           loop
           muted
           aria-label="Promotional video for Accolade"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-black opacity-50" />
         <div className="absolute bottom-0 left-0 w-full text-center pb-8 text-white">
@@ -58,36 +59,78 @@ function Home() {
         title="DAWN"
         description="An Emblem of Prestige and Class"
         details="7 bedrooms | 7 ½ bath | L29 x W16.5"
-        backgroundUrl="/dawn.jpg"
+        backgroundUrl="/dawn.webp"
         exploreLink="/explore2"
         customizeLink="/customize2"
+        loading="lazy"
       />
       <ImageSection
         title="SPECTER"
         description="The Aura of Splendor; Inspiring Exceptional Living"
         details="8 bedrooms | 8 ½ bath | L27 x W17"
-        backgroundUrl="/specter.jpg"
+        backgroundUrl="/specter.webp"
         exploreLink="/explore3"
         customizeLink="/customize3"
+        loading="lazy"
       />
 
       {/* Footer */}
-      <footer className="bg-white text-black py-12" ref={footerRef}>
-        <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0 lg:space-x-8">
-          <div className="text-center lg:text-left">
-            <h3 className="text-2xl md:text-3xl font-semibold mb-4">Discover Alcasa Contemporary</h3>
+      <footer className="bg-gray-900 text-gray-200 py-16" ref={footerRef}>
+        <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0 lg:space-x-8 px-6">
+          {/* Company Info & Call to Action */}
+          <div className="lg:flex-1 text-center lg:text-left">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-white">Discover Alcasa Contemporary</h3>
             <Link to="/about">
-              <button className="bg-black hover:bg-gray-600 text-white border border-gray-700 rounded-full px-6 py-3 transition duration-300" aria-label="Learn More About Alcasa Contemporary">
+              <button
+                className="bg-indigo-600 hover:bg-indigo-700 text-white border border-transparent rounded-full px-6 py-3 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                aria-label="Learn More About Alcasa Contemporary"
+              >
                 Learn More
               </button>
             </Link>
           </div>
 
-          <SocialLinks />
-          <QuickLinks handleOpenModal={handleOpenModal} />
+          {/* Social Links & Newsletter Subscription */}
+          <div className="lg:flex-1 flex flex-col items-center lg:items-start">
+            <div className="flex space-x-4 mb-6">
+              <a href="https://facebook.com/your-facebook-handle" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-2xl text-gray-400 hover:text-indigo-500 transition duration-300">
+                <FaFacebook />
+              </a>
+              <a href="https://twitter.com/your-twitter-handle" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-2xl text-gray-400 hover:text-indigo-500 transition duration-300">
+                <FaTwitter />
+              </a>
+              <a href="https://instagram.com/your-instagram-handle" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-2xl text-gray-400 hover:text-indigo-500 transition duration-300">
+                <FaInstagram />
+              </a>
+              <a href="https://youtube.com/your-youtube-handle" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-2xl text-gray-400 hover:text-indigo-500 transition duration-300">
+                <FaYoutube />
+              </a>
+            </div>
+            <p className="text-sm text-gray-400 mb-4">Subscribe to our newsletter for updates.</p>
+            <form className="flex flex-col sm:flex-row w-full sm:max-w-sm">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="border border-gray-600 bg-gray-800 rounded-l-full px-4 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                aria-label="Email Address"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-r-full px-4 py-2 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                aria-label="Subscribe"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
 
+          {/* Quick Links */}
+          <QuickLinks handleOpenModal={handleOpenModal} />
         </div>
-        <div className="container mx-auto mt-8 text-center lg:text-right">
+
+        {/* Footer Bottom */}
+        <div className="container mx-auto mt-8 text-center lg:text-right px-6">
           <p className="text-sm text-gray-500">© 2024 Alcasa Contemporary. All rights reserved.</p>
         </div>
       </footer>

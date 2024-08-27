@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Experience02 = () => {
+  const [showContactInfo, setShowContactInfo] = useState(false);
+
+  const handleContactClick = () => {
+    setShowContactInfo(!showContactInfo);
+  };
+
   return (
     <motion.div 
       className="max-w-7xl mx-auto px-4 py-8 mt-14"
@@ -53,10 +59,19 @@ const Experience02 = () => {
           />
           <p className="mb-8 text-gray-700">Experience the unparalleled satisfaction of creating a home that is truly one-of-a-kind.</p>
           {/* Contact our Architect Button */}
-          <button className="bg-blue700 text-white px-4 py-2 rounded hover:bg-blue-600">Contact our Architect</button>
+          <button 
+            className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={handleContactClick}
+          >
+            Contact our Architect
+          </button>
+          {showContactInfo && (
+            <div className="mt-4 p-4 border border-blue-700 rounded">
+              <p className="text-gray-700">Contact us at: provide me contact</p>
+              <p className="text-gray-700">Email: provide me email</p>
+            </div>
+          )}
         </section>
-
-       
 
         {/* Absolute Bespoke Project Gallery */}
         <section className="mb-12">
@@ -182,45 +197,52 @@ const Experience02 = () => {
           </div>
         </section>
 
+        {/* Ownership Section */}
         <section className="mb-12">
-  <h3 className="text-2xl font-bold mb-4">Ownership</h3>
-  {/* Steps */}
-  <ol className="list-decimal pl-6 mb-8">
-    <li className="mb-4">
-      <h4 className="font-bold mb-2">Explore Signature Craft Residences</h4>
-      <p className="mb-2 text-gray-700">Dive into our exclusive collection of meticulously crafted Signature Craft residences, each offering unparalleled luxury and sophistication. Choose the residence that resonates with your unique style and vision, setting the stage for a truly exceptional living experience.</p>
-    </li>
-    <li className="mb-4">
-      <h4 className="font-bold mb-2">Consultation with our Architect</h4>
-      <p className="mb-2 text-gray-700">Embark on a personalized journey with our architects and designers as you discuss your aspirations and preferences. Benefit from expert guidance and insights to bring your dream home to life, tailored precisely to your desires and requirements.</p>
-    </li>
-    <li className="mb-4">
-      <h4 className="font-bold mb-2">Secure Your Signature Craft Unit with a Reservation Fee</h4>
-      <p className="mb-2 text-gray-700">Confirm your interest and Secure one of our limited units for development on your land by paying a reservation fee equivalent to 3% of the base price (N450,000,000). This fee also grants access to our pre-development services, including full customization, site visitation and analysis, and the production of essential construction drawings, among many others.</p>
-    </li>
-    <li className="mb-4">
-      <h4 className="font-bold mb-2">Customize and Confirm Your Residence</h4>
-      <p className="mb-2 text-gray-700">Participate in the customization journey as we tailor the design to your unique preferences and plot requirements, ensuring a bespoke home that reflects your individuality and harmonizes with your property.</p>
-    </li>
-    <li className="mb-4">
-      <h4 className="font-bold mb-2">Seal the Deal</h4>
-      <p className="mb-2 text-gray-700">With terms clarified and agreements reached, finalize your commitment by signing the construction contract. Secure your place in the journey to your dream home by making an initial deposit as outlined in the contract, marking the beginning of the construction phase.</p>
-    </li>
-    <li className="mb-4">
-      <h4 className="font-bold mb-2">Contact our Architect</h4>
-      <p className="mb-2 text-gray-700">To start your journey towards owning a luxurious bespoke residence, contact our architect today.</p>
-      <button className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Contact Now
-      </button>
-    </li>
-    <li className="mb-4">
-      <h4 className="font-bold mb-2">Witness Your Vision Come to Life</h4>
-      <p className="mb-2 text-gray-700">Experience the excitement of seeing your vision materialize as our dedicated team transforms plans into reality. From groundbreaking to completion, stay informed and engaged at every stage, culminating in the unforgettable moment when you step into your customized Accolade luxury residence.</p>
-    </li>
-  </ol>
-</section>
-
-
+          <h3 className="text-2xl font-bold mb-4">Ownership</h3>
+          <ol className="list-decimal pl-6 mb-8">
+            <li className="mb-4">
+              <h4 className="font-bold mb-2">Explore Signature Craft Residences</h4>
+              <p className="mb-2 text-gray-700">Dive into our exclusive collection of meticulously crafted Signature Craft residences, offering unparalleled luxury and sophistication. Choose the residence that resonates with your unique style and vision.</p>
+            </li>
+            <li className="mb-4">
+              <h4 className="font-bold mb-2">Consultation with our Architect</h4>
+              <p className="mb-2 text-gray-700">Embark on a personalized journey with our architects and designers as you discuss your aspirations and preferences, bringing your dream home to life.</p>
+            </li>
+            <li className="mb-4">
+              <h4 className="font-bold mb-2">Secure Your Signature Craft Unit with a Reservation Fee</h4>
+              <p className="mb-2 text-gray-700">Confirm your interest by paying a reservation fee equivalent to 3% of the base price (N450,000,000). This fee grants access to our pre-development services, including full customization, site visitation, and the production of essential construction drawings.</p>
+            </li>
+            <li className="mb-4">
+              <h4 className="font-bold mb-2">Customize and Confirm Your Residence</h4>
+              <p className="mb-2 text-gray-700">Participate in the customization journey, ensuring a bespoke home that reflects your individuality and harmonizes with your property.</p>
+            </li>
+            <li className="mb-4">
+              <h4 className="font-bold mb-2">Seal the Deal</h4>
+              <p className="mb-2 text-gray-700">Finalize your commitment by signing the construction contract and making an initial deposit, marking the beginning of the construction phase.</p>
+            </li>
+            <li className="mb-4">
+              <h4 className="font-bold mb-2">Contact our Architect</h4>
+              <p className="mb-2 text-gray-700">To start your journey towards owning a luxurious bespoke residence, contact our architect today.</p>
+              <button 
+                className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={handleContactClick}
+              >
+                Contact Now
+              </button>
+              {showContactInfo && (
+                <div className="mt-4 p-4 border border-blue-700 rounded">
+                  <p className="text-gray-700">Contact us at: decide which number you want to include</p>
+                  <p className="text-gray-700">Email: provide me email</p>
+                </div>
+              )}
+            </li>
+            <li className="mb-4">
+              <h4 className="font-bold mb-2">Witness Your Vision Come to Life</h4>
+              <p className="mb-2 text-gray-700">Experience the excitement as our dedicated team transforms plans into reality, culminating in the unforgettable moment when you step into your customized Accolade luxury residence.</p>
+            </li>
+          </ol>
+        </section>
       </section>
     </motion.div>
   );
