@@ -2,7 +2,7 @@
   "name": "client",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://www.alcasacontemporaryddc.com/",
+  "homepage": "alcasacontemporary.netlify.app",
   "type": "module",
   "scripts": {
     "dev": "vite",
